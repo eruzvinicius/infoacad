@@ -446,6 +446,6 @@ buck-out/
 /ios/Pods/
 
 #API Keys
-/function/infoacada-ifprpalmas-firebase.json
+functions/infoacad-ifprpalmas-firebase.json
 
 # End of https://www.toptal.com/developers/gitignore/api/reactnative,node
