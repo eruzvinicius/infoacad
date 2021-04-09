@@ -19,14 +19,13 @@ class Login extends Component {
 
     componentDidUpdate = prevProps => {
         if (prevProps.isLoading && !this.props.isLoading) {
-            this.props.navigation.navigate('Feed')
+            this.props.navigation.navigate('Profile')
         }
     }
 
     login = () => {
         this.props.onLogin({ ...this.state })
     }
-
     render() {
         return (
             <View style={styles.container}>
