@@ -16,7 +16,7 @@ import {
 import ImagePicker from 'react-native-image-picker'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-const noUser = 'Você precisa estar logado para fazer publicações'
+const noUser = 'Você precisa estar logado e possuir permissão para fazer publicações'
 
 class AddPhoto extends Component {
     state = {

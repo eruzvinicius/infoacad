@@ -2,6 +2,7 @@
 
 ## Introdução
 A entrada na Universidade é sempre um desafio: um ambiente completamente novo e organizado de uma maneira com que muitos ainda não tiveram contato. Divididos em blocos, setores e departamentos, cada um possui uma função específica, e recorrentemente torna-se difícil saber onde pode-se conseguir uma determinada informação ou realizar uma atividade. Essa última situação, inclusive, deixa de se restringir aos recém-chegados, mas se estende também para os acadêmicos que já estão cursando a faculdade. O site da faculdade, apesar de informativo, possui diversas abas e links, tornando todo o processo demorado, e geralmente, ineficaz. Essa ferramenta costuma ser acessada corriqueiramente apenas por uma mínima parcela dos alunos, fazendo com que a informação não atinja o público-alvo de maior interesse: os alunos da faculdade. Não apenas isso, mas essa dificuldade de obtenção de informações específicas afasta ainda mais os alunos do portal de notícias, de maneira que eles estejam sempre dependendo da ajuda de colegas que já possuam uma maior familiaridade com a plataforma mencionada. Para contornar essa problemática, desenvolveu-se um aplicativo mobile para o Instituto Federal do Paraná – Campus Palmas, de maneira a centralizar as informações aos alunos.
+
 Em um mural de notícias, pode-se ter acesso rápido, direto e objetivo a diversas postagens, em ordem cronológica, a publicações referentes à prazos, como Assistência Estudantil, matrículas, cancelamentos e transferências de curso, decisões orçamentárias, aquisição de novos equipamentos, planejamento, reformas, eventos, estágios, avisos importantes, dentre demais outras pertinentes ao ambiente acadêmico. Já na categoria de informações específicas aos Cursos, o aluno pode ter acesso a postagens referentes a Semanas Acadêmicas, Centro Acadêmico, Confraternizações e recados do Colegiado. Dessa forma, pretende-se aumentar não apenas o acesso à informação, mas também o engajamento do aluno nos mais diversos assuntos estudantis. Os acadêmicos, conscientizados sobre gastos, eventos e prazos podem participar, engajar-se e colaborar com decisões e atividades dentro do âmbito acadêmico, melhorando tanto a sua experiência e aproveitamento com o ensino superior quanto no aprimoramento da Instituição em si.
 
 ## Objetivos
@@ -15,7 +16,7 @@ acadêmicos e servidores da instituição;
 * Escolher uma tecnologia híbrida e desenvolver testes e exemplos práticos para uso no desenvolvimento do software em questão.
 * Desenvolver um aplicativo multiplataforma com uso de React Native e Firebase, visando possibilidade de integração no futuro com outros sistemas existentes
 na instituição (Sagres);
-* Oferecer o recurso de notificações push, para que o acadêmico ou servidor receba as informações recentes em seu celular sem a necessidade de abrir o aplicativo; (em construção)
+* Oferecer o recurso de notificações push, para que o acadêmico ou servidor receba as informações recentes em seu celular sem a necessidade de abrir o aplicativo; (Trabalhos Futuros)
 
 
 ## Principais Funcionalidades do Aplicativo
@@ -71,7 +72,16 @@ O Cloud Storage para Firebase é um serviço de armazenamento de objetos avança
 
 ## Execução de Código
 
-###Código Fonte do Projeto
+### Estrutura do Código
+O código está organizado em pastas
+
+
+
+
+
+
+
+### Código Fonte do Projeto
 O presente projeto possui código fonte aberto, e está disponível para consulta e estudo em repositório público nesse GitHub.
 Para fazer o download do projeto para a sua máquina local, pode ser utilizado o botão verde 'Code' do canto superior direito do GitHub, ou o uso do comando
 ```
@@ -79,7 +89,6 @@ Para fazer o download do projeto para a sua máquina local, pode ser utilizado o
 ```
 
 ### Como rodar a aplicação
-
 Após instaladass as ferramentas, tecnnologias e módulos utilizados, conectar o celular via cabo USB com a opção de Depuração USB ativada, ou abrir o Android Studio e abrir o emulador desejado.
 Na IDE, digita-se o seguinte comando para executar o aplicativo em um dispositivo Android
 ```
@@ -101,16 +110,20 @@ A Splash screen é definida pelo arquivo /src/screens/splash.js e não faz uso d
 ### Tela de Feed de Notícias
 Após a apresentação da Splash Screen, o usuário é redirecionado de maneira automática para o Feed de notícias. Nela, é possível consultar todas as notícias postadas pelos usuários cadastrados e com permissão, mesmo se ainda não foi feito o login.
 Por padrão, caso o login ainda não tenha sido feito, não é possível realizar comentários. As notícias consistem de um autor, um título, uma categoria, uma data, uma imagem, e um array de comentários.
-As notícias são apresentadas em ordem cronológica decrescente, isto é, das notícias mais recentes pras mais antigas.
-O Feed de Notícias é definido pelo arquivo /src/screens/feed.js e faz uso do Header, um componente que aparece no topo da tela apresentando o nome do aplicativo e interagindo com o estado global da aplicação verificando se o usuário está logado ou não. 
-Também faz o uso do componente comentário, autor e post, onde são definidas as suas estrututuras, nos arquivos /src/components/Comments.js, /src/components/Author.js e src/components/Post.js.
+As notícias são apresentadas em ordem cronológica decrescente, isto é, das notícias mais recentes em cima, pras mais antigas, embaixo.
+O Feed de Notícias é definido pelo arquivo /src/screens/Feed.js, e pode ser acessado pelo primeiro ícone, no canto inferior esquerdo, da Barra de Navegação Inferior. Essa tela Faz uso do Header, um componente que aparece no topo da tela apresentando o nome do aplicativo e interagindo com o estado global da aplicação verificando se o usuário está logado ou não. 
+Também faz o uso do componente comentário, autor e post, onde são definidas as suas estruturas, nos arquivos /src/components/Comments.js, /src/components/Author.js e src/components/Post.js.
 Faz o uso também do componente Navigator (src/Navigator.js), na tela inferior, por meio do qual é possível navegar entre as telas de Login, Feed de Notícias e Criação de Publicação.
 
 ### Tela de Cadastro de Usuário
-Na tela de cadastro do usuário, acessada pelo botão de registro de usuário dentro da tela de Login, são apresentados diversos componentes, solicitando os dados da pessoa como: nome
+Na tela de cadastro do usuário, acessada pelo botão de Registro de Usuário dentro da tela de Login, são apresentados diversos componentes, solicitando os dados da pessoa como: nome, email, cpf, categoria (se é acadêmico, servidor, egresso ou outro), o curso (apresentando-se as opções de não se aplica, dependendo da categoria, e todos os cursos disponíveis no IFPR Campus Palmas), e senha. Assim que o usuário toca em salvar, ele é redirecionado para a tela de Login, caso todas as informações tenham sido preenchidas corretamente.
+A Tela de Cadastro do usuário é definida pelo arquivo /src/screens/Register.js, e faz o uso do componente Navigator.js (/src/Navigator.js) para que sejam defnidas as rotas entre as telas de Login e Registro.
+
 
 ### Tela de Cadastro de Postagem
-Na tela de cadastro de postagem, acessado
+Na tela de cadastro de postagem, acessada pela barra de navegação inferior, no ícone central, são apresentados diversos componentes que constituem uma postagem, como foto, título e data da notícia, categoria e texto da publicação. A tela é definida pelo arquivo /src/AddPhoto.js, e faz o uso do componente Navigator (src/Navigator.js), na tela inferior, por meio do qual é possível navegar entre as telas de Login, Feed de Notícias e Criação de Publicação. Uma vez que o usuário esteja logado, a tela de login é substituída pela Tela de Perfil de Usuário.
+As postagens podem apenas ser realizadas por usuários que fizeram o login e que possuem permissão de postagem, sendo apresentada uma mensagem de erro caso a condição não seja satisfeita. 
+
 
 ### Tela de Perfil de Usuário
-Na tela de Perfil de Usuário, é apresentado de maneira breve e simples os dados utilizados pela pessoa durante o seu cadastro. Além disso, existe também um botão de Logout pra que ela possa encerrar a sua sessão e fazer o login com outra conta.
+Na tela de Perfil de Usuário, é apresentado de maneira breve e simples os dados utilizados pela pessoa durante o seu cadastro, e é definida pelo arquivo /src/Profile.js. Faz o uso do componente Navigator (src/Navigator.js), na tela inferior, por meio do qual é possível navegar entre as telas de Login, Feed de Notícias e Criação de Publicação. Uma vez que o usuário esteja logado, a tela de login é substituída pela Tela de Perfil de Usuário. Além disso, existe também um botão de Logout pra que ela possa encerrar a sua sessão e fazer o login com outra conta.
