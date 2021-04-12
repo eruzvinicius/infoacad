@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Dimensions
 } from 'react-native'
 
 class Comments extends Component {
@@ -31,10 +32,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         margin: 10,
-        width: '90%'
+        
+
     },
     commentContainer: {
         flexDirection: 'row',
+        width: '80%',
         marginTop: 5
     },
     nickname: {

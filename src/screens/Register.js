@@ -116,7 +116,7 @@ class Register extends Component {
 
                 />
 
-                <DropDownPicker style={styles.combo}
+                <DropDownPicker 
                     isVisible = {this.state.isVisibleCurso}
                     onOpen={() => this.changeVisibility({isVisibleCurso: true})}
                     onClose={() => this.setState({isVisibleCurso: false })}

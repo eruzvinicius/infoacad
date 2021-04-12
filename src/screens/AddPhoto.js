@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
 import { addPost } from '../store/actions/posts'
 import {
@@ -15,8 +15,10 @@ import {
 } from 'react-native'
 import ImagePicker from 'react-native-image-picker'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import DropDownPicker from 'react-native-dropdown-picker/src';
+import DatePicker from 'react-native-datepicker';
 
-const noUser = 'Você precisa estar logado e possuir permissão para fazer publicações'
+const noUser = 'Você precisa estar logado e possuir permissão para fazer publicações'                 
 
 class AddPhoto extends Component {
     state = {
@@ -29,6 +31,9 @@ class AddPhoto extends Component {
         if (prevProps.loading && !this.props.loading) {
             this.setState({
                 image: null,
+                titulo: '',
+                data: '',
+                tag: '',
                 comment: '',
                 editMode: false
             })
@@ -66,6 +71,10 @@ class AddPhoto extends Component {
             nickname: this.props.name,
             email: this.props.email,
             image: this.state.image,
+            data: this.state.data,
+            tag: this.state.tag,
+            titulo: this.state.titulo,
+
             comments: [{
                 nickname: this.props.name,
                 comment: this.state.comment
@@ -91,21 +100,136 @@ class AddPhoto extends Component {
         return (
             <ScrollView>
                 <View style={styles.container}>
-                    <Text style={styles.title}>Realizar Publicação</Text>
+                    <Text style={styles.title}>Realizar Publicação</Text>                   
+                    <View style={styles.viewBorder}>
+                        <TextInput placeholder='Título da Publicação' style={styles.input}
+                        autoFocus={false} value={this.state.titulo}
+                        onChangeText={titulo => this.setState({ titulo })} />
+                    </View>
+                    {/* <View style={styles.viewBorder}>
+                        <TextInput placeholder='Data da Publicação' style={styles.input}
+                        value={this.state.data}  keyboardType = 'numeric'
+                        onChangeText={data => this.setState({ data })} />
+                    </View> */}
+                    <View style={styles.viewBorder}>
+                    <DatePicker 
+                            style={{width: '100%'}}
+                            date={this.state.data}
+                            mode="date"
+                            placeholder="Selecione a Data"
+                            format="DD/MM/YYYY"
+                            minDate="01/01/2021"
+                            maxDate="31/12/2029"
+                            confirmBtnText="Confirmar"
+                            cancelBtnText="Cancelar"
+                            customStyles={{
+                            dateIcon: {
+                                position: 'absolute',
+                                left: 0,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 30,
+                                borderWidth: 0,
+                                alignItems: 'flex-start'
+                            }
+                            }}
+                            onDateChange={(data) => {this.setState({data: data})}}
+                        />
+                    </View>
+                    
+                    
+                    <DropDownPicker style={styles.combo}
+                    items={[
+                        {label: 'Assistência Estudantil', value: 'Assistência Estudantil',},
+                        {label: 'Biblioteca', value: 'Biblioteca',},
+                        {label: 'Calendário Acadêmico', value: 'Calendário Acadêmico',},
+                        {label: 'Campanhas', value: 'Campanhas',},
+                        {label: 'CELIF', value: 'CELIF',},
+                        {label: 'CODIC', value: 'CODIC',},
+                        {label: 'Direção Geral', value: 'Direção Geral',},
+                        {label: 'Evento', value: 'Evento',},
+                        {label: 'Eventos Institucionais', value: 'Eventos Institucionais',},
+                        {label: 'Extensão', value: 'Extensão',},
+                        {label: 'Gestão', value: 'Gestão',},
+                        {label: 'GT Pessoas', value: 'GT Pessoas',},
+                        {label: 'Institucional', value: 'Institucional',},
+                        {label: 'Internacional', value: 'Internacional',},
+                        {label: 'Pesquisa', value: 'Pesquisa',},
+                        {label: 'PIBID', value: 'PIBID',},
+                        {label: 'Processo Seletivo', value: 'Processo Seletivo',},
+                        {label: 'Reitoria', value: 'Reitoria',},
+                        {label: 'Secretaria Acadêmica', value: 'Secretaria Acadêmica',},
+                        {label: 'SEPAE', value: 'SEPAE',},
+
+                        {label: 'Técnico em Alimentos', value: 'Técnico em Alimentos', },
+                        {label: 'Técnico em Serviços Jurídicos', value: 'Técnico em Serviços Jurídicos',},
+                        {label: 'Administração', value: 'Administração',},
+                        {label: 'Agronomia', value: 'Agronomia',},
+                        {label: 'Artes Visuais', value: 'Artes Visuais',},
+                        {label: 'Ciências Biológicas', value: 'Ciências Biológicas',},
+                        {label: 'Ciências Contábeis', value: 'Ciências Contábeis',},
+                        {label: 'Direito', value: 'Direito',},
+                        {label: 'Educação Física', value: 'Educação Física',},
+                        {label: 'Enfermagem', value: 'Enfermagem',},
+                        {label: 'Farmácia', value: 'Farmácia',},
+                        {label: 'Letras - Português/Inglês', value: 'Letras - Português/Inglês',},
+                        {label: 'Pedagogia', value: 'Pedagogia',},
+                        {label: 'Química', value: 'Química',},
+                        {label: 'Sistemas de Informação', value: 'Sistemas de Informação',},
+                        {label: 'Pós Graduação em Linguagens Híbridas e Educação', value: 'Pós Graduação em Linguagens Híbridas e Educação',},
+                        
+                        {label: 'Outro', value: 'Outro',}            
+                    ]}
+                    
+                    placeholder = 'Selecione uma tag'
+                    defaultValue={this.props.tag}
+                    onChangeItem={item => this.setState({tag: item.value})}
+
+                    style={{borderTopLeftRadius: 10,
+                            borderTopRightRadius: 10,
+                            borderBottomLeftRadius: 10,
+                            borderBottomRightRadius: 10,
+                            borderWidth: 2,
+                            borderColor: '#309F41',
+                            backgroundColor: '#EEE',
+                            height: 40
+                            }}
+
+                    dropDownStyle={{backgroundColor: '#fafafa'}}
+                    containerStyle={{width: '90%', height: 40, marginTop: 20}}
+                    itemStyle={{justifyContent: 'flex-start'}}
+
+                    labelStyle={{
+                        fontSize: 14,
+                        textAlign: 'left',
+                        color: '#959595'
+                    }}
+                    selectedLabelStyle={{
+                         color: '#959595',
+                    }}
+                    activeLabelStyle={{color: '#309F41'}}
+                    arrowStyle={{marginRight: 10}}
+                    />
                     {publiArea}
-                    <TouchableOpacity onPress={this.pickImage} style={styles.button}>
-                        <Text style={styles.buttonText}>Adicionar Foto</Text>  
-                    </TouchableOpacity>
-                    <TextInput placeholder='Texto da Publicação'
-                        style={styles.input} value={this.state.comment}
-                        editable={this.props.name != null}
-                        onChangeText={comment => this.setState({ comment })} />
-                    <TouchableOpacity onPress={this.save}
-                        disabled={this.props.loading}
-                        style={[styles.button, this.props.loading ? styles.buttonDisabled : null]}>
-                        <Text style={styles.buttonText}>Salvar</Text>
-                    </TouchableOpacity>
+                    <View style={styles.container1}>
+                        <TouchableOpacity onPress={this.pickImage} style={styles.button}>
+                            <Text style={styles.buttonText}>Adicionar Foto</Text>  
+                        </TouchableOpacity>
+                        <TextInput placeholder='Texto da Publicação'
+                            style={styles.inputTexto} value={this.state.comment}
+                            editable={this.props.name != null}
+                            onChangeText={comment => this.setState({ comment })} />
+                        <TouchableOpacity onPress={this.save}
+                            disabled={this.props.loading}
+                            style={[styles.button, this.props.loading ? styles.buttonDisabled : null]}>
+                            <Text style={styles.buttonText}>Salvar</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
+
+     
             </ScrollView>
         )
     }
@@ -116,6 +240,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
+    container1: {
+        flex: 1,
+        alignItems: 'center',
+        width: '100%'
+    },
     title: {
         fontSize: 30,
         marginTop: Platform.OS === 'ios' ? 30 : 10,
@@ -123,6 +252,7 @@ const styles = StyleSheet.create({
         color:'#309F41',
     },
     imageContainer: {
+        flex: 1,
         width: '90%',
         height: Dimensions.get('window').width / 2,
         backgroundColor: '#FFF',
@@ -148,7 +278,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#FFF',
     },
-    input: {
+    inputTexto: {
         marginTop: 20,
         width: '90%',
         height: Dimensions.get('window').width / 2,
@@ -160,7 +290,34 @@ const styles = StyleSheet.create({
     },
     buttonDisabled: {
         backgroundColor: '#FFF'
-    }
+    },
+    viewBorder:{
+        backgroundColor: '#EEE',
+        borderRadius: 10,
+        marginTop: 20,
+        width: '90%',
+        height: 40,
+        borderWidth: 2,
+        borderColor: '#309F41',
+    },    
+    container2: {
+        flex: 1,
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        padding: 20,
+        color: '#309F41'
+    },
+
+    datePickerStyle: {
+        width: 200,
+        marginTop: 20,
+    },
 })
 
 const mapStateToProps = ({ user, posts }) => {
