@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Splash from './screens/Splash'
 import Feed from './screens/Feed'
-import AddPhoto from './screens/AddPhoto'
+import AddPost from './screens/AddPost'
 import Profile from './screens/Profile'
 import Login from './screens/Login'
 import Register from './screens/Register'
@@ -50,10 +50,10 @@ const MenuRoutes = {
         }
     },
     Add: {
-        name: 'AddPhoto',
-        screen: AddPhoto,
+        name: 'AddPost',
+        screen: AddPost,
         navigationOptions: {
-            title: 'Add Picture',
+            title: 'Add Post',
             tabBarIcon: ({ tintColor }) =>
                 <Icon name='plus-circle' size={30} color={tintColor} />
         }

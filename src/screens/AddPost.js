@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { addPost } from '../store/actions/posts'
 import {
@@ -93,7 +93,8 @@ class AddPhoto extends Component {
         }else{
             publiArea = (
                 <View style={styles.imageContainer}>
-                        <Icon name='image' size={150} color='#EEE' justifyContent= 'center' alignItems = 'center' />
+                        <Icon name='image' size={150} color='#EEE' 
+                        justifyContent= 'center' alignItems = 'center' />
                 </View>  
             )
         }
@@ -106,11 +107,6 @@ class AddPhoto extends Component {
                         autoFocus={false} value={this.state.titulo}
                         onChangeText={titulo => this.setState({ titulo })} />
                     </View>
-                    {/* <View style={styles.viewBorder}>
-                        <TextInput placeholder='Data da Publicação' style={styles.input}
-                        value={this.state.data}  keyboardType = 'numeric'
-                        onChangeText={data => this.setState({ data })} />
-                    </View> */}
                     <View style={styles.viewBorder}>
                     <DatePicker 
                             style={{width: '100%'}}
@@ -135,11 +131,8 @@ class AddPhoto extends Component {
                                 alignItems: 'flex-start'
                             }
                             }}
-                            onDateChange={(data) => {this.setState({data: data})}}
-                        />
-                    </View>
-                    
-                    
+                            onDateChange={(data) => {this.setState({data: data})}} />
+                    </View>                  
                     <DropDownPicker style={styles.combo}
                     items={[
                         {label: 'Assistência Estudantil', value: 'Assistência Estudantil',},
@@ -228,9 +221,7 @@ class AddPhoto extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-
-     
-            </ScrollView>
+          </ScrollView>
         )
     }
 }  
@@ -254,7 +245,7 @@ const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         width: '90%',
-        height: Dimensions.get('window').width / 3,
+        height: Dimensions.get('window').width / 2,
         backgroundColor: '#FFF',
         marginTop: 10,
         borderWidth: 1,

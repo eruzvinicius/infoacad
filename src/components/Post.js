@@ -12,7 +12,6 @@ class Post extends Component {
             <AddComment postId={this.props.id} /> : null
         return (
             <View style={styles.container}>
-                {/* <Author email={this.props.email} nickname={this.props.nickname} /> */}
                 <Text style={styles.data}>{this.props.data}</Text>
                 <Text style={styles.tag}>{this.props.tag}</Text>
                 <Text style={styles.titulo}>{this.props.titulo}</Text>
@@ -29,13 +28,13 @@ class Post extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: Dimensions.get('window').width,
+        width: '99%',
         backgroundColor: '#FFF',
         borderRadius: 15,
         borderWidth: 1,
         borderColor: '#CCC',
         shadowColor: '#CCC',
-        margin: 3
+        margin: 3,
     },
     image: {
         width: '100%',

@@ -24,9 +24,6 @@ export default class Splash extends Component {
                     style={styles.image} />
                 <Text>Desenvolvido por Eruz Vinicius Hüffner Lourenço</Text>
                 </View>
-                
-                
-
             </View>
         )
     }

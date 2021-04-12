@@ -50,9 +50,6 @@ class Login extends Component {
                     }} style={styles.button}>
                         <Text style={styles.buttonText}>Criar nova conta</Text>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity onPress={this.login} style={styles.button}>
-                        <Text style={styles.buttonText}>Recuperar Senha</Text>
-                    </TouchableOpacity> */}
                 </View>
                 <View style={styles.footer}>
                 <Image source={require('../../assets/imgs/IFPR_logo.png')}

@@ -31,22 +31,28 @@ class Comments extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 10,
-        
+        margin: 5,        
+        width: '100%',
 
     },
     commentContainer: {
         flexDirection: 'row',
-        width: '80%',
-        marginTop: 5
+        marginTop: 5,
+        width: '100%',
+        borderColor: '#EEE',
+        borderWidth: 1,
+        borderRadius: 10
     },
     nickname: {
-        marginLeft: 5,
+        flex:1,
+        marginLeft: 3,
+        width: '25%',
         fontWeight: 'bold',
         color: '#444'
     },
     comment: {
-        color: '#555'
+        color: '#555',
+        width: '75%',
     }
 })
 
