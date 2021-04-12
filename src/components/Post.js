@@ -29,7 +29,7 @@ class Post extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: '99%',
+        width: Dimensions.get('window').width,
         backgroundColor: '#FFF',
         borderRadius: 15,
         borderWidth: 1,
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         color: '#FFF',
         margin: 10,
+        padding: 10,
         fontSize: 16, 
         backgroundColor: '#309F41'
     },

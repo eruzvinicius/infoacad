@@ -93,7 +93,7 @@ class AddPhoto extends Component {
         }else{
             publiArea = (
                 <View style={styles.imageContainer}>
-                        <Icon name='image' size={200} color='#EEE' justifyContent= 'center' alignItems = 'center' />
+                        <Icon name='image' size={150} color='#EEE' justifyContent= 'center' alignItems = 'center' />
                 </View>  
             )
         }
@@ -247,14 +247,14 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        marginTop: Platform.OS === 'ios' ? 30 : 10,
+        marginTop: Platform.OS === 'ios' ? 20 : 50,
         fontWeight: 'bold',
         color:'#309F41',
     },
     imageContainer: {
         flex: 1,
         width: '90%',
-        height: Dimensions.get('window').width / 2,
+        height: Dimensions.get('window').width / 3,
         backgroundColor: '#FFF',
         marginTop: 10,
         borderWidth: 1,
