@@ -8,6 +8,9 @@ import {
 const initialState = {
     name: null,
     email: null,
+    cpf: null,
+    categoria: null,
+    curso: null,
     isLoading: false,
     token: null,
 }
@@ -19,6 +22,9 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 name: action.payload.name,
                 email: action.payload.email,
+                cpf: action.payload.cpf,
+                categoria: action.payload.categoria,
+                curso: action.payload.curso,
                 token: action.payload.token,
             }
         case USER_LOGGED_OUT:

@@ -34,13 +34,16 @@ export const createUser = user => {
             .catch(err => {
                 dispatch(setMessage({
                     title: 'Erro',
-                    text: 'Ocorreu um erro ao criar um novo usuário! Método POST.'
+                    text: 'Usuário já existente no banco de dados. Por favor utilize outro e-mail.'
                 }))
             })
             .then(res => {
                 if (res.data.localId) {
                     axios.put(`/users/${res.data.localId}.json`, {
-                        name: user.name
+                        name: user.name,
+                        cpf:user.cpf,
+                        categoria: user.categoria,
+                        curso: user.curso
                     })
                         .catch(err => {
                             dispatch(setMessage({
@@ -79,7 +82,7 @@ export const login = user => {
             .catch(err => {
                 dispatch(setMessage({
                     title: 'Erro',
-                    text: 'Ocorreu um erro ao fazer o login. Método POST!'
+                    text: 'Login ou senha incorretos. Por favor tente novamente.'
                 }))
             })
             .then(res => {
@@ -95,6 +98,9 @@ export const login = user => {
                         .then(res => {
                             delete user.password
                             user.name = res.data.name
+                            user.categoria = res.data.categoria
+                            user.cpf = res.data.cpf
+                            user.curso = res.data.curso
                             dispatch(userLogged(user))
                             dispatch(userLoaded())
                         })

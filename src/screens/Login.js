@@ -31,7 +31,7 @@ class Login extends Component {
             <View style={styles.container}>
                 <Text style={styles.titulo}>InfoAcad</Text>
                 <View style={styles.viewBorder}>
-                    <TextInput placeholder='Usuário' style={styles.input}
+                    <TextInput placeholder='Email' style={styles.input}
                         autoFocus={true} keyboardType='email-address'
                         value={this.state.email}
                         onChangeText={email => this.setState({ email })} />
@@ -50,9 +50,9 @@ class Login extends Component {
                     }} style={styles.button}>
                         <Text style={styles.buttonText}>Criar nova conta</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={this.login} style={styles.button}>
+                    {/* <TouchableOpacity onPress={this.login} style={styles.button}>
                         <Text style={styles.buttonText}>Recuperar Senha</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <View style={styles.footer}>
                 <Image source={require('../../assets/imgs/IFPR_logo.png')}
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         padding: 10,
         backgroundColor:"#309F41",
-        borderRadius:15
+        borderRadius:10
     },
     buttonText: {
         fontSize: 20,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     },
     viewBorder:{
         backgroundColor: '#EEE',
-        borderRadius: 15,
+        borderRadius: 10,
         marginTop: 20,
         width: '90%',
         height: 40,

@@ -13,7 +13,7 @@ import Profile from './screens/Profile'
 import Login from './screens/Login'
 import Register from './screens/Register'
 
-console.disableYellowBox = true; 
+//console.disableYellowBox = true; 
 
 const authRouter = createStackNavigator({
     Login: { screen: Login, navigationOptions: { title: 'Login Usuário' } },

@@ -47,5 +47,3 @@ const mapStateToProps = ({ user }) => {
 }
 
 export default connect(mapStateToProps)(Post)
-
-// export default Post

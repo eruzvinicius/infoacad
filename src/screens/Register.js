@@ -17,10 +17,8 @@ class Register extends Component {
         email: '',
         password: '',
         cpf:'',
-        dataNascimento:'',
-        categoria: null,
-        curso: null,
-        foto:'',
+        categoria: '',
+        curso: '',
         isVisibleCategoria: false,
         isVisibleCurso: false,
     }
@@ -31,6 +29,9 @@ class Register extends Component {
                 name: '',
                 email: '',
                 password: '',
+                cpf:'',
+                categoria: '',
+                curso: '',
                 isVisibleCategoria: false,
                 isVisibleCurso: false,
             })
@@ -56,6 +57,11 @@ class Register extends Component {
                         onChangeText={name => this.setState({ name })} />
                 </View>
                 <View style={styles.viewBorder}>
+                    <TextInput placeholder='CPF' style={styles.input}
+                     value={this.state.cpf}
+                    onChangeText={cpf => this.setState({ cpf })} />
+                </View> 
+                <View style={styles.viewBorder}>
                     <TextInput placeholder='Email' style={styles.input}
                     keyboardType='email-address' value={this.state.email}
                     onChangeText={email => this.setState({ email })} />
@@ -73,20 +79,20 @@ class Register extends Component {
                     
 
                     items={[
-                        {label: 'Servidor', value: 'servidor',},
-                        {label: 'Acadêmico', value: 'academico', },
+                        {label: 'Servidor', value: 'Servidor',},
+                        {label: 'Acadêmico', value: 'Acadêmico', },
                         {label: 'Egresso', value: 'Egresso',},
-                        {label: 'Outro', value: 'outro',},
+                        {label: 'Outro', value: 'Outro',},
                     ]}
                     
                     placeholder = 'Selecione uma categoria'
                     defaultValue={this.state.categoria}
                     onChangeItem={item => this.setState({categoria: item.value})}
 
-                    style={{borderTopLeftRadius: 15,
-                            borderTopRightRadius: 15,
-                            borderBottomLeftRadius: 15,
-                            borderBottomRightRadius: 15,
+                    style={{borderTopLeftRadius: 10,
+                            borderTopRightRadius: 10,
+                            borderBottomLeftRadius: 10,
+                            borderBottomRightRadius: 10,
                             borderWidth: 2,
                             borderColor: '#309F41',
                             backgroundColor: '#EEE',
@@ -140,10 +146,10 @@ class Register extends Component {
                     defaultValue={this.state.curso}
                     onChangeItem={item => this.setState({curso: item.value})}
 
-                    style={{borderTopLeftRadius: 15,
-                            borderTopRightRadius: 15,
-                            borderBottomLeftRadius: 15,
-                            borderBottomRightRadius: 15,
+                    style={{borderTopLeftRadius: 10,
+                            borderTopRightRadius: 10,
+                            borderBottomLeftRadius: 10,
+                            borderBottomRightRadius: 10,
                             borderWidth: 2,
                             borderColor: '#309F41',
                             backgroundColor: '#EEE',
@@ -190,9 +196,8 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 30,
         padding: 10,
-        borderRadius:15,
+        borderRadius:10,
         backgroundColor:"#309F41",
-        borderRadius:15
     },
     buttonText: {
         fontSize: 20,
@@ -202,7 +207,7 @@ const styles = StyleSheet.create({
     },
     viewBorder:{
         backgroundColor: '#EEE',
-        borderRadius: 15,
+        borderRadius: 10,
         marginTop: 20,
         width: '90%',
         height: 40,

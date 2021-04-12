@@ -127,10 +127,11 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').width / 2,
         backgroundColor: '#FFF',
         marginTop: 10,
-        borderWidth: 2,
-        borderColor: '#309F41',
+        borderWidth: 1,
+        borderColor: '#888',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 10
     },
     image: {
         width: '100%',
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         padding: 10,
         backgroundColor:'#309F41',
-        borderRadius: 15
+        borderRadius: 10
     },
     buttonText: {
         fontSize: 20,
@@ -153,7 +154,9 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').width / 2,
         borderWidth: 2,
         borderColor: '#309F41',
-        borderRadius: 15,
+        borderRadius: 10,
+        textAlignVertical: 'top',
+        backgroundColor: '#FFF'
     },
     buttonDisabled: {
         backgroundColor: '#FFF'
